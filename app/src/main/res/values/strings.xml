@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CompraVenta</string>
+    <string name="titulo_publicacion">Titulo</string>
+    <string name="email_publicacion">Email de contacto</string>
+    <string name="descripcion_publicacion">Descripcion (opcional)</string>
+    <string name="precio_publicacion">Precio AR$</string>
+    <string name="descuento_envio">Ofrecer descuento de envio</string>
+    <string name="retiro_en_persona">Retiro en persona</string>
+    <string name="terminos_condiciones">Aceptar Terminos y Condiciones</string>
+
+    <string name="publicar_publicacion">PUBLICAR</string>
 </resources>

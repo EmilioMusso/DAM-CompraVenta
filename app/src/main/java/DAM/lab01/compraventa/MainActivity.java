@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        productosList = (ListView) findViewById(R.id.productosList);
+        //productosList = (ListView) findViewById(R.id.productosList);
 
     }
 }
