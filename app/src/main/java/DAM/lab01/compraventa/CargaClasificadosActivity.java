@@ -2,18 +2,23 @@ package DAM.lab01.compraventa;
 
 import static java.lang.String.*;
 
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Layout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import DAM.lab01.compraventa.model.Publicacion;
@@ -32,10 +37,17 @@ public class CargaClasificadosActivity extends AppCompatActivity {
     private String categoria;
     private Spinner spinnerCategoria;
     private Switch switchDescuentoEnvio;
+    private Boolean admiteDescuentoEnvio;
     private SeekBar sliderDescuentoEnvio;
+    private LinearLayout blockDescuentoEnvio;
+    private TextView txtDescuentoEnvioValue;
     private Integer descuentoEnvio;
     private CheckBox boxRetiroEnPersona;
+    private Boolean admiteRetiroEnPersona;
+    private TextView txtDireccionRetiroEnPersona;
+    private CharSequence direccionRetiro;
     private CheckBox boxTerminosCondiciones;
+    private Boolean aceptaTerminosCondiciones;
     private Button btnPublicar;
 
     final String[] categoriasDisponibles = {"INDUMENTARIA", "ELECTRONICA", "ENTRETENIMIENTO", "JARDIN", "VEHICULOS", "JUGUETES"};
@@ -44,7 +56,6 @@ public class CargaClasificadosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga_clasificados);
-
 
         txtTitulo = findViewById(R.id.txtTitulo);
         titulo = valueOf(txtTitulo.getText());
@@ -73,27 +84,41 @@ public class CargaClasificadosActivity extends AppCompatActivity {
             }
         });
 
-        this.switchDescuentoEnvio.setOnClickListener(new View.OnClickListener() {
+        this.switchDescuentoEnvio = (Switch) findViewById(R.id.switchDescuentoEnvio);
+        this.sliderDescuentoEnvio = (SeekBar) findViewById(R.id.sliderCostoEnvio);
+        this.txtDescuentoEnvioValue = (TextView) findViewById(R.id.txtDescuentoEnvioValue);
+        this.blockDescuentoEnvio = (LinearLayout) findViewById(R.id.blockDescuentoEnvio);
+        this.sliderDescuentoEnvio.setVisibility(View.GONE);
+        this.txtDescuentoEnvioValue.setVisibility(View.GONE);
+        this.blockDescuentoEnvio.setVisibility(View.GONE);
+        this.descuentoEnvio = 0;
+        this.sliderDescuentoEnvio.setProgress(descuentoEnvio);
+        this.txtDescuentoEnvioValue.setText(descuentoEnvio.toString());
+        this.switchDescuentoEnvio.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                if(switchDescuentoEnvio.isChecked()) {
-                    //sliderDescuentoEnvio.setVisibility(View.VISIBLE);
-                    Toast.makeText(getApplicationContext(), "TODO OPEN SLIDER",Toast.LENGTH_LONG).show();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean selected) {
+                admiteDescuentoEnvio = selected;
+                if(selected) {
+                    sliderDescuentoEnvio.setVisibility(View.VISIBLE);
+                    txtDescuentoEnvioValue.setVisibility(View.VISIBLE);
+                    blockDescuentoEnvio.setVisibility(View.VISIBLE);
+                    sliderDescuentoEnvio.setProgress(descuentoEnvio);
+                    txtDescuentoEnvioValue.setText(descuentoEnvio.toString()+"0");
                 } else {
-                    //sliderDescuentoEnvio.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(), "TODO CERRAR SLIDER",Toast.LENGTH_LONG).show();
+                    sliderDescuentoEnvio.setVisibility(View.GONE);
+                    txtDescuentoEnvioValue.setVisibility(View.GONE);
+                    blockDescuentoEnvio.setVisibility(View.GONE);
                 }
             }
         });
 
-        /*
-        this.sliderDescuentoEnvio.setTranslationX(0);
-        this.descuentoEnvio = 0;
         this.sliderDescuentoEnvio.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int value, boolean b) {
-                Toast.makeText(getApplicationContext(), "VALOR SLIDER: "+value,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "VALOR SLIDER: "+value,Toast.LENGTH_SHORT).show();
                 descuentoEnvio = value;
+                sliderDescuentoEnvio.setProgress(descuentoEnvio);
+                txtDescuentoEnvioValue.setText(descuentoEnvio.toString()+"0");
             }
 
             @Override
@@ -101,18 +126,49 @@ public class CargaClasificadosActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
-        });*/
+        });
 
+        this.boxRetiroEnPersona = (CheckBox) findViewById(R.id.boxRetiroEnPersona);
+        this.txtDireccionRetiroEnPersona = (TextView) findViewById(R.id.txtDireccionRetiroEnPersona);
+        txtDireccionRetiroEnPersona.setVisibility(View.GONE);
+        this.boxRetiroEnPersona.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean selected) {
+                admiteRetiroEnPersona = selected;
+                if(selected) {
+                    txtDireccionRetiroEnPersona.setVisibility(View.VISIBLE);
+                    direccionRetiro = txtDireccionRetiroEnPersona.getText();
+                } else {
+                    txtDireccionRetiroEnPersona.setVisibility(View.GONE);
+                }
+            }
+        });
 
+        this.boxTerminosCondiciones = (CheckBox) findViewById(R.id.boxTerminosCondiciones);
+        this.btnPublicar = (Button) findViewById(R.id.btnPublicar);
+        this.btnPublicar.setEnabled(false);
+        this.boxTerminosCondiciones.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean selected) {
+                aceptaTerminosCondiciones = selected;
+            }
+        });
 
-        /*publicacion = new Publicacion(
+/*        this.btnPublicar.setEnabled(txtTitulo.getText()!=null &&
+                txtEmail.getText()!=null &&
+                txtPrecio.getText()!=null &&
+                (admiteRetiroEnPersona && txtDireccionRetiroEnPersona.getText()!=null || !admiteRetiroEnPersona) &&
+                aceptaTerminosCondiciones
+        );
+
+        publicacion = new Publicacion(
                 titulo,
                 email,
                 descripcion,
                 precio,
                 categoria,
-                descuentoEnvio,
-                null,null);*/
-
+                descuentoEnvio*10,
+                direccionRetiro,
+                );*/
     }
 }

@@ -4,130 +4,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".CargaClasificadosActivity">
 
-<TextView
-    android:id="@+id/labelTitulo"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/titulo_publicacion" />
+    <TextView
+        android:id="@+id/labelTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_publicacion" />
 
-<EditText
-    android:id="@+id/txtTitulo"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="textPersonName"
-    android:minHeight="48dp"
-    android:singleLine="true"
-    tools:ignore="SpeakableTextPresentCheck" />
+    <EditText
+        android:id="@+id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:singleLine="true"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-<TextView
-    android:id="@+id/labelEmail"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/email_publicacion" />
+    <TextView
+        android:id="@+id/labelEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/email_publicacion" />
 
-<EditText
-    android:id="@+id/txtEmail"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="textEmailAddress"
-    android:minHeight="48dp"
-    android:singleLine="true"
-    tools:ignore="SpeakableTextPresentCheck" />
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:singleLine="true"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-<TextView
-    android:id="@+id/labelDescripcion"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/descripcion_publicacion" />
+    <TextView
+        android:id="@+id/labelDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/descripcion_publicacion" />
 
-<EditText
-    android:id="@+id/txtDescripcion"
-    style="@style/Widget.AppCompat.EditText"
-    android:layout_width="match_parent"
-    android:layout_height="108dp"
-    android:ems="10"
-    android:inputType="textPersonName"
-    android:scrollHorizontally="false"
-    android:singleLine="false"
-    android:textAlignment="viewStart"
-    android:textAllCaps="false"
-    tools:ignore="SpeakableTextPresentCheck" />
+    <EditText
+        android:id="@+id/txtDescripcion"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-<TextView
-    android:id="@+id/labelPrecio"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/precio_publicacion" />
+    <TextView
+        android:id="@+id/labelPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/precio_publicacion" />
 
-<EditText
-    android:id="@+id/txtPrecio"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="number"
-    android:minHeight="48dp"
-    tools:ignore="SpeakableTextPresentCheck" />
+    <EditText
+        android:id="@+id/txtPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-<Spinner
-    android:id="@+id/spinnerCategoria"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="48dp"
-    android:popupBackground="@android:color/darker_gray"
-    android:dropDownSelector="@android:color/holo_orange_dark"
-    android:spinnerMode="dropdown"
-    tools:ignore="SpeakableTextPresentCheck" />
+    <Spinner
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dropDownSelector="@android:color/holo_orange_dark"
+        android:minHeight="48dp"
+        android:popupBackground="@android:color/darker_gray"
+        android:spinnerMode="dropdown"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-<Switch
-    android:id="@+id/switchDescuentoEnvio"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="48dp"
-    android:text="@string/descuento_envio" />
+    <Switch
+        android:id="@+id/switchDescuentoEnvio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/descuento_envio"
+        android:thumbTint="@android:color/holo_orange_light"
+        android:trackTint="@android:color/darker_gray" />
 
-<SeekBar
-    android:id="@+id/sliderCostoEnvio"
-    style="@style/Widget.AppCompat.SeekBar.Discrete"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:max="10"
-    android:progress="10"
-    android:progressTint="@android:color/holo_orange_light"
-    android:thumbTint="@android:color/holo_orange_dark"
-    android:visibility="visible" />
+    <LinearLayout
+        android:id="@+id/blockDescuentoEnvio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-<CheckBox
-    android:id="@+id/boxRetiroEnPersona"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="48dp"
-    android:text="@string/retiro_en_persona" />
+        <TextView
+            android:id="@+id/txtDescuentoEnvioValue"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center" />
 
-<EditText
-    android:id="@+id/txtDireccionRetiroEnPersona"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="textPersonName"
-    android:minHeight="48dp"
-    tools:ignore="SpeakableTextPresentCheck" />
+        <SeekBar
+            android:id="@+id/sliderCostoEnvio"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="10"
+            android:progressTint="?android:attr/colorActivatedHighlight"
+            android:thumbTint="@android:color/darker_gray"
+            android:visibility="visible" />
 
-<CheckBox
-    android:id="@+id/boxTerminosCondiciones"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="48dp"
-    android:text="@string/terminos_condiciones" />
+    </LinearLayout>
 
-<Button
-android:id="@+id/btnPublicar"
-style="@style/Widget.AppCompat.Button.Colored"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:enabled="false"
-android:text="@string/publicar_publicacion" />
+    <CheckBox
+        android:id="@+id/boxRetiroEnPersona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@android:color/holo_orange_light"
+        android:minHeight="48dp"
+        android:text="@string/retiro_en_persona" />
+
+    <EditText
+        android:id="@+id/txtDireccionRetiroEnPersona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <CheckBox
+        android:id="@+id/boxTerminosCondiciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@android:color/holo_orange_light"
+        android:minHeight="48dp"
+        android:text="@string/terminos_condiciones" />
+
+    <Button
+        android:id="@+id/btnPublicar"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/publicar_publicacion"
+        android:textColorLink="@android:color/holo_orange_light" />
 </LinearLayout>

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/activity_carga_clasificados.xml" value="0.33" />
+        <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/activity_main.xml" value="0.1897644927536232" />
         <entry key="app/src/main/res/layout/activity_carga_clasificados.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fila_publicacion.xml" value="0.22" />
