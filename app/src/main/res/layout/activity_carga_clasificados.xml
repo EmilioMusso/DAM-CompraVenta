@@ -47,13 +47,13 @@
 
     <EditText
         android:id="@+id/txtDescripcion"
-        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="108dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:scrollHorizontally="false"
-        android:singleLine="false"
+        android:lines="3"
+        android:minLines="1"
+        android:maxLines="8"
+        android:inputType="textMultiLine"
+        android:scrollbars="horizontal"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         tools:ignore="SpeakableTextPresentCheck" />

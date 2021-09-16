@@ -21,6 +21,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import DAM.lab01.compraventa.exceptions.CamposInvalidosException;
 import DAM.lab01.compraventa.model.Publicacion;
 
 public class CargaClasificadosActivity extends AppCompatActivity {
@@ -59,12 +60,36 @@ public class CargaClasificadosActivity extends AppCompatActivity {
 
         txtTitulo = findViewById(R.id.txtTitulo);
         titulo = valueOf(txtTitulo.getText());
+        txtTitulo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    btnPublicar.setEnabled(camposCompletos());
+                }
+            }
+        });
         txtEmail = findViewById(R.id.txtEmail);
         email = valueOf(txtEmail.getText());
+        txtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    btnPublicar.setEnabled(camposCompletos());
+                }
+            }
+        });
         txtDescripcion = findViewById(R.id.txtDescripcion);
         descripcion = valueOf(txtDescripcion.getText());
         txtPrecio = findViewById(R.id.txtPrecio);
         precio = valueOf(txtPrecio.getText());
+        txtPrecio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    btnPublicar.setEnabled(camposCompletos());
+                }
+            }
+        });
 
         this.spinnerCategoria = (Spinner) findViewById(R.id.spinnerCategoria);
         ArrayAdapter<CharSequence> spinnerAdapter = new ArrayAdapter<CharSequence>(this,
@@ -138,29 +163,35 @@ public class CargaClasificadosActivity extends AppCompatActivity {
                 if(selected) {
                     txtDireccionRetiroEnPersona.setVisibility(View.VISIBLE);
                     direccionRetiro = txtDireccionRetiroEnPersona.getText();
+                    btnPublicar.setEnabled(camposCompletos());
                 } else {
                     txtDireccionRetiroEnPersona.setVisibility(View.GONE);
+                    btnPublicar.setEnabled(camposCompletos());
+                }
+            }
+        });
+
+        txtDireccionRetiroEnPersona.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    btnPublicar.setEnabled(camposCompletos());
                 }
             }
         });
 
         this.boxTerminosCondiciones = (CheckBox) findViewById(R.id.boxTerminosCondiciones);
         this.btnPublicar = (Button) findViewById(R.id.btnPublicar);
-        this.btnPublicar.setEnabled(false);
+        this.btnPublicar.setEnabled(camposCompletos());
         this.boxTerminosCondiciones.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean selected) {
                 aceptaTerminosCondiciones = selected;
+                btnPublicar.setEnabled(camposCompletos());
             }
         });
 
-/*        this.btnPublicar.setEnabled(txtTitulo.getText()!=null &&
-                txtEmail.getText()!=null &&
-                txtPrecio.getText()!=null &&
-                (admiteRetiroEnPersona && txtDireccionRetiroEnPersona.getText()!=null || !admiteRetiroEnPersona) &&
-                aceptaTerminosCondiciones
-        );
-
+        /*
         publicacion = new Publicacion(
                 titulo,
                 email,
@@ -169,6 +200,26 @@ public class CargaClasificadosActivity extends AppCompatActivity {
                 categoria,
                 descuentoEnvio*10,
                 direccionRetiro,
-                );*/
+                );
+        */
+    }
+
+    private Boolean camposCompletos() {
+        return (!txtTitulo.getText().toString().isEmpty() &&
+                !txtEmail.getText().toString().isEmpty() &&
+                !txtPrecio.getText().toString().isEmpty() &&
+                ((boxRetiroEnPersona.isChecked() && !txtDireccionRetiroEnPersona.getText().toString().isEmpty()) || !boxRetiroEnPersona.isChecked()) &&
+                boxTerminosCondiciones.isChecked()
+        );
+    }
+
+    private Boolean camposInvalidos() throws CamposInvalidosException {
+        if(emailInvalido())
+            throw new CamposInvalidosException("Ingrese una direccion de mail valida.");
+        else return true;
+    }
+
+    private boolean emailInvalido() {
+        return true;
     }
 }
