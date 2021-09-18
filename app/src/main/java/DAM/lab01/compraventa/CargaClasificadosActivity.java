@@ -224,7 +224,7 @@ public class CargaClasificadosActivity extends AppCompatActivity {
 
     private Boolean camposInvalidos() throws CamposInvalidosException {
         if(tituloInvalido())
-            throw new CamposInvalidosException("Actual: "+titulo); //El titulo solo puede contener letras (mayusculas o minusculas), números, comas, puntos o saltos de linea.");
+            throw new CamposInvalidosException("El titulo solo puede contener letras (mayusculas o minusculas), números, comas, puntos o saltos de linea.");
         if(emailInvalido())
             throw new CamposInvalidosException("Por favor ingrese una direccion de mail valida.");
         if(descripcionInvalida())
