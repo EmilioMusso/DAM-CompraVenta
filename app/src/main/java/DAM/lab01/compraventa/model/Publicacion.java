@@ -7,16 +7,15 @@ public class Publicacion {
     private Integer precio;
     private String categoria;
     private Integer descuentoEnvio;
-    private Boolean retiroEnPersona;
     private String direccionRetiroEnPersona;
 
     public Publicacion(String titulo, String email, String descripcion, Integer precio, String categoria, Integer descuentoEnvio, Object o, Object o1) {}
 
-    public Publicacion(String titulo, String email, String descripcion, String precio, String categoria, Integer descuentoEnvio, Integer costoEnvio, Boolean retiroEnPersona, String direccionRetiroEnPersona) {
+    public Publicacion(String titulo, String email, String descripcion, Integer precio, String categoria, Integer descuentoEnvio, String direccionRetiro) {
         this.titulo = titulo;
         this.email = email;
         this.descripcion = descripcion;
-        this.precio = Integer.valueOf(precio);
+        this.precio = precio;
         this.categoria = categoria;
         this.descuentoEnvio = descuentoEnvio;
         this.direccionRetiroEnPersona = direccionRetiroEnPersona;
