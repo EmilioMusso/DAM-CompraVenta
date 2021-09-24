@@ -2,6 +2,7 @@ package DAM.lab01.compraventa;
 
 import static java.lang.String.*;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,7 @@ public class CargaClasificadosActivity extends AppCompatActivity {
     private Integer precio;
     private EditText txtPrecio;
     private String categoria;
-    private Spinner spinnerCategoria;
+    private Button btnSeleccionarCategoria;
     private Switch switchDescuentoEnvio;
     private Boolean admiteDescuentoEnvio;
     private SeekBar sliderDescuentoEnvio;
@@ -80,23 +81,50 @@ public class CargaClasificadosActivity extends AppCompatActivity {
         txtDescripcion = findViewById(R.id.txtDescripcion);
         txtPrecio = findViewById(R.id.txtPrecio);
 
-        this.spinnerCategoria = (Spinner) findViewById(R.id.spinnerCategoria);
-        ArrayAdapter<CharSequence> spinnerAdapter = new ArrayAdapter<CharSequence>(this,
-                R.layout.support_simple_spinner_dropdown_item,
-                categoriasDisponibles);
-        this.spinnerCategoria.setAdapter(spinnerAdapter);
-        this.spinnerCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                categoria = (String) spinnerAdapter.getItem(position);
-                //Toast.makeText(getApplicationContext(), "SELECCIONO: "+categoria,Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
+
+
+
+
+
+
+
+
+
+
+
+
+        btnSeleccionarCategoria = (Button) findViewById(R.id.btnSeleccionarCategoria);
+        btnSeleccionarCategoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(
+                        CargaClasificadosActivity.this,
+                        SeleccionarCategoriaActivity.class);
+                startActivity(i);
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         this.switchDescuentoEnvio = (Switch) findViewById(R.id.switchDescuentoEnvio);
         this.admiteDescuentoEnvio = false;

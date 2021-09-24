@@ -9,4 +9,6 @@
     <string name="terminos_condiciones">Aceptar Terminos y Condiciones</string>
     <string name="publicar_publicacion">PUBLICAR</string>
     <string name="descuento_envio_value">0</string>
+    <string name="seleccionar_categoria">Seleccionar Categoria</string>
+    <string name="categorias">CATEGORIAS</string>
 </resources>

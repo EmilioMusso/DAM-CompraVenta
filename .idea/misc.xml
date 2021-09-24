@@ -5,6 +5,10 @@
       <map>
         <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/activity_carga_clasificados.xml" value="0.33" />
         <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/activity_main.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/activity_seleccionar_categoria.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/fila_cat.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/fila_publicacion.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/emili/StudioProjects/DAM-CompraVenta/app/src/main/res/layout/fila_recycler.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_carga_clasificados.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fila_publicacion.xml" value="0.22" />
